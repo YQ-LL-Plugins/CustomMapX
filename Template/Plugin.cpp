@@ -264,11 +264,11 @@ namespace Helper {
 			switch (imagedata.length())
 			{
 			case -1: {
-				pl->sendText("§l§6[CustomMapX] §cImage does not exist!");
+				pl->sendText("[CustomMapX] Image does not exist!");
 				return std::make_tuple(std::vector<unsigned char>(), 0, 0);
 			}
 			case -2: {
-				pl->sendText("§l§6[CustomMapX] §cImage decoding failure!");
+				pl->sendText("[CustomMapX] Image decoding failure!");
 				return std::make_tuple(std::vector<unsigned char>(), 0, 0);
 			}
 			}
@@ -299,26 +299,26 @@ namespace Helper {
 				switch (imagedata.length())
 				{
 				case -1: {
-					pl->sendText("§l§6[CustomMapX] §cURL is not legal!");
+					pl->sendText("[CustomMapX] URL is not legal!");
 					return;
 				}
 				case -2: {
-					pl->sendText("§l§6[CustomMapX] §cImage out of size!");
+					pl->sendText("[CustomMapX] Image out of size!");
 					return;
 				}
 				case -3: {
-					pl->sendText("§l§6[CustomMapX] §cURL is not a Image!");
+					pl->sendText("[CustomMapX] URL is not a Image!");
 					return;
 				}
 				case -4: {
-					pl->sendText("§l§6[CustomMapX] §cURL Access failure!");
+					pl->sendText("[CustomMapX] URL Access failure!");
 					return;
 				}
 				case -5: {
-					pl->sendText("§l§6[CustomMapX] §cImage decoding failure!");
+					pl->sendText("[CustomMapX] Image decoding failure!");
 				}
 				case -6: {
-					pl->sendText("§l§6[CustomMapX] §cImage exceeds maximum allowed size!");
+					pl->sendText("[CustomMapX] Image exceeds maximum allowed size!");
 				}
 				}
 			}
@@ -338,7 +338,7 @@ namespace Helper {
 			}
 			isChange = std::make_tuple(false, std::vector<unsigned char>(), 0, 0, "");
 			if (pl) {
-				pl->sendText("§l§6[CustomMapX] §cAdd Map Error!");
+				pl->sendText("[CustomMapX] Add Map Error!");
 			}
 			return;
 		}
@@ -346,7 +346,7 @@ namespace Helper {
 			auto pl = Global<Level>->getPlayer(plname);
 			if (pl) {
 				isChange = std::make_tuple(false, std::vector<unsigned char>(), 0, 0, "");
-				pl->sendText("§l§6[CustomMapX] §cAdd Map Error!");
+				pl->sendText("[CustomMapX] Add Map Error!");
 			}
 		}
 	}
@@ -421,7 +421,7 @@ namespace Helper {
 				ytemp = 0;
 			}
 		}
-		sp->sendText("§l§6[CustomMapX] §aAdd Map Success!(" + std::to_string(datalist.size()) + ")");
+		sp->sendText("[CustomMapX] Add Map Success!(" + std::to_string(datalist.size()) + ")");
 	}
 	
 	string rand_str(const int len)
@@ -494,11 +494,11 @@ void RegCommand()
 							}
 						}
 						else {
-							sp->sendText("§l§6[CustomMapX] §cYou are not allowed to add img map!");
+							sp->sendText("[CustomMapX] You are not allowed to add img map!");
 						}
 					}
 					else {
-						sp->sendText("§l§6[CustomMapX] §cFrequent operation, please try again later!\n§gRemaining time:" + std::to_string(Settings::memberRateLimit - ((getTimeStamp() - tempList[sp->getRealName()]) / 1000)) + "s");
+						sp->sendText("[CustomMapX] Frequent operation, please try again later!\nRemaining time:" + std::to_string(Settings::memberRateLimit - ((getTimeStamp() - tempList[sp->getRealName()]) / 1000)) + "s");
 					}
 				}
 				break;
@@ -510,14 +510,14 @@ void RegCommand()
 							auto url = results["UrlStr"].getRaw<std::string>();
 							std::thread th(Helper::Url2Pix, url, sp->getRealName());
 							th.detach();
-							output.success("§l§6[CustomMapX] §aGenerating, please wait!");
+							output.success("[CustomMapX] Generating, please wait!");
 						}
 						else {
-							sp->sendText("§l§6[CustomMapX] §cYou are not allowed to download img map!");
+							sp->sendText("[CustomMapX] You are not allowed to download img map!");
 						}
 					}
 					else {
-						sp->sendText("§l§6[CustomMapX] §cFrequent operation, please try again later!\n§gRemaining time:" + std::to_string(Settings::memberRateLimit - ((getTimeStamp() - tempList[sp->getRealName()]) / 1000)) + "s");
+						sp->sendText("[CustomMapX] Frequent operation, please try again later!\nRemaining time:" + std::to_string(Settings::memberRateLimit - ((getTimeStamp() - tempList[sp->getRealName()]) / 1000)) + "s");
 					}
 				}
 				break;
@@ -528,18 +528,18 @@ void RegCommand()
 					getAllFiles(".\\plugins\\CustomMapX\\picture", out);
 					command.getInstance()->addSoftEnumValues("MapENameList", out);
 					Settings::LoadConfigFromJson(JsonFile);
-					output.success("§l§6[CustomMapX] §aReload Success!");
+					output.success("[CustomMapX] Reload Success!");
 				}
 				break;
 			}
 			case do_hash("help"): {
 				output.success(
-					"§l§e>§6CustomMapX§e<\n"
-					"§b/map add §a<mapfile> §gAdd maps\n"
-					"§b/map download §a<url> §gDownload maps\n"
-					"§b/map reload §gRefresh picture path\n"
-					"§b/map help\n"
-					"§l§e>§6CustomMapX§e<");
+					">CustomMapX<\n"
+					"/map add <mapfile> Add maps\n"
+					"/map download <url> Download maps\n"
+					"/map reload Refresh picture path\n"
+					"/map help\n"
+					">CustomMapX<");
 				break;
 			}
 			default:
@@ -746,6 +746,7 @@ bool UseItemSupply(Player* sp, ItemStackBase& item, string itemname, short aux) 
 			}
 			},1);
 	}
+	return true;
 }
 
 
