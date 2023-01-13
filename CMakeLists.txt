@@ -32,9 +32,9 @@ add_link_options(
         /MANIFESTUAC:NO /OPT:ICF /ERRORREPORT:PROMPT /NOLOGO /DELAYLOAD:"bedrock_server.dll" /TLBID:1
 )
 
-add_library(TemplatePlugin SHARED ${SRC_FILES_DIR})
+add_library(CustomMapX SHARED ${SRC_FILES_DIR})
 
-add_custom_command(TARGET TemplatePlugin PRE_BUILD
+add_custom_command(TARGET CustomMapX PRE_BUILD
         COMMAND cmd /c ${PROJECT_SOURCE_DIR}/prepareLib.cmd ${PROJECT_SOURCE_DIR}
         COMMENT "Preparing Library"
         )
