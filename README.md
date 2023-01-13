@@ -8,6 +8,8 @@
 
 - If you add images after the server has been start, you will need `/map reload`, to refresh the image list.
 
+- You can download image from Internet by `/map download "<URL>"`
+
 - You can get help with `/map help`
 
 <img src=".github/cropharvesting.gif" alt="show" />
