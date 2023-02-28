@@ -1,0 +1,14 @@
+{
+    "DownloadImg": {
+        "Allow-Member": true
+    },
+    "ImgSize": {
+        "maxFileSize": 20,
+        "maxHeight": 2048,
+        "maxWidth": 2048
+    },
+    "LocalImg": {
+        "Allow-Member": false
+    },
+    "MemberRateLimit": 60
+}

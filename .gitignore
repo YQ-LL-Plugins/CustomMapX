@@ -6,6 +6,9 @@
 **/bedrock_server_api.lib
 **/bedrock_server_var.lib
 
+RELEASE/*.dll
+RELEASE/*.zip
+
 /.idea/*
 !/.idea/cmake.xml
 /cmake-build-*
